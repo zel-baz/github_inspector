@@ -399,6 +399,7 @@ body {
 }
 .app-footer .container p.name {
     color: #fff;
+    padding: 8px;
     font-size: 1.1em;
     font-weight: bold;
     background-color: #1a1a1a;
