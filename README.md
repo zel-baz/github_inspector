@@ -25,4 +25,4 @@ GitHub Profile Inspector is a web application that allows users to inspect GitHu
 1. Clone the repository to your local machine:
 
    ```bash
-   git clone https://github.com/
+   git clone https://github.com/zouhairElbaz/github_inspector
