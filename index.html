@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="src/style/global.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Github Inspector</title>
+</head>
+<body>
+    <header class="app-header">
+        <div class="container">
+            <a href="#dev-info" class="logo">
+                <h1>ZED</h1>
+            </a>
+            <form class="search">
+                <input type="text" name="search" id="search" placeholder="User name">
+                <button>
+                    <i class="icon fas fa-search"></i>
+                </button>
+            </form>
+        </div>
+    </header>
+
+
+    <div class="error-section">
+        <div>
+            <p class="error">This is an error</p>
+            <button class="close">
+                <i class="fas fa-close"></i>
+            </button>
+        </div>
+    </div>
+
+
+    <section class="profile">
+        <div class="container">
+            <section class="user-info-section">
+                <div class="top">
+                    <div class="user-pic">
+                        <img src="" alt="user-pic">
+                    </div>
+                    <p class="user-name">User name</p>
+                    <p class="user-bio">User bio</p>
+                </div>
+                <div class="bottom">
+                    <div class="followers">
+                        <p class="followers">
+                            <span>0</span> Followers
+                        </p>
+                        <p class="following">
+                            <span>0</span> Following
+                        </p>
+                    </div>
+                    <p class="location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Unknown</span>
+                    </p>
+                    <p class="repos">
+                        <span>0</span> Total repos
+                    </p>
+                    <a href="#" target="_blank" class="user-profile">Visit Profile</a>
+                </div>
+            </section>
+            <section class="repos-info-section">
+                <div class="repo-box">
+                    <div class="repo-pic">
+                        <img src="" alt="repo picture">
+                    </div>
+                    <p class="repo-name">Repo name</p>
+                    <p class="repo-description">repo description</p>
+                    <div class="actions">
+                        <div class="info">
+                            <div class="stars">
+                                <i class="far fa-star"></i>
+                                0
+                            </div>
+                            <div class="forks">
+                                <i class="fas fa-code-branch"></i>
+                                0
+                            </div>
+                        </div>
+                        <a href="#" class="repo-link">Visit</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+
+    <footer id="dev-info" class="app-footer">
+        <div class="container">
+            <p class="name">
+                &#64; Zohir
+            </p>
+            <a href="https://github.com/zouhairElbaz">
+                Github
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://linkedin.com/in/zouhairelbaz">
+                LinkedIn
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://x.com/ZouHaiR_Elbaz">
+                X
+                <i class="fab fa-x-twitter"></i>
+            </a>
+            <a href="mailto:zouhairlbaz55@gmail.com">
+                Email
+                <i class="fas fa-envelope"></i>
+            </a>
+            <a href="#">
+                Morocco
+                <i class="fas fa-map-marker-alt"></i>
+            </a>
+            <a href="https://zouhairelbaz.github.io/zed">
+                ZED
+                <i class="fas fa-globe"></i>
+            </a>
+        </div>
+    </footer>
+    <script src="src/scripts/main.js"></script>
+</body>
+</html>

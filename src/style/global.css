@@ -1,0 +1,448 @@
+:root {
+    --bg: #111;
+    --clr: #fff;
+}
+:focus {
+    outline: none;
+}
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    caret-color: var(--main-color);
+    font-family: sans-serif;
+}
+html {
+    scroll-behavior: smooth;
+}
+ul {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+h1,h2,h3,h4,h5,h6{
+    margin: 0;
+}
+.container {
+    padding: 0 15px;
+    margin: auto;
+}
+@media (min-width: 768px) {
+    .container {
+        width: 750px;
+    }
+}
+@media (min-width: 992px) {
+    .container {
+        width: 970px;
+    }
+}
+@media (min-width: 1200px) {
+    .container {
+        width: 1170px;
+    }
+}
+body {
+    background-color: var(--bg);
+    color: var(--clr);
+    font-family: sans-serif;
+    min-height: 100vh;
+    position: relative;
+}
+
+
+/* App Header */
+.app-header,
+.profile {
+    padding: 10px;
+}
+.app-header .container {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 25px;
+    border-radius: 20px;
+    border: 1px solid #393939;
+    background-color: #222;
+}
+.app-header .container .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    padding: 2px;
+    color: #fff;
+}
+.app-header .container .logo h1 {
+    font-size: 1.8em;
+    font-weight: normal;
+}
+
+
+@media (max-width: 350px) {
+    .app-header .container .logo {
+        display: none;
+    }
+    .app-header .container .logo h1 {
+        font-size: 1.2em;
+    }
+}
+.app-header .container .search {
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+@media (max-width: 350px) {
+    .app-header .container .search {
+        width: 100%;
+    }
+}
+.app-header .container .search input {
+    display: block;
+    width: 80%;
+    padding: 10px;
+    background-color: #333;
+    border: 1px solid #444;
+    border-radius: 8px 0 0 8px;
+    color: #fff;
+    font-size: 1em;
+}
+.app-header .container .search button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    border: 1px solid #444;
+    border-radius: 0 8px 8px 0;
+    padding: 11px;
+    background-color: #006eff;
+    color: var(--clr);
+    font-size: 1em;
+    cursor: pointer;
+}
+
+
+
+/* Error section */
+.error-section {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 255, 0.1);
+    backdrop-filter: blur(15px);
+}
+.error-section.active {
+    display: flex;
+}
+.error-section .error {
+    font-size: 1.6em;
+    color: #f00;
+    padding: 10px;
+}
+.error-section button.close {
+    display: flex;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    margin: 10px auto;
+    width: fit-content;
+    padding: 10px 32px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.4em;
+    background-color: rgb(255, 255, 255);
+}
+@media (max-width: 300px){
+    .error-section .error {
+        font-size: 1.2em;
+    }
+    .error-section button.close {
+        padding: 8px 14px;
+        font-size: 1em;
+    }
+}
+
+
+
+
+
+/* Profile style */
+.profile .container {
+    background-color: #222;
+    border: 1px solid #393939;
+    padding: 10px;
+    border-radius: 8px;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(10, 1fr);
+}
+.profile .container .user-info-section {
+    grid-column: 1/4;
+}
+.profile .container .repos-info-section {
+    grid-column: 4/11;
+}
+.profile .container .user-info-section,
+.profile .container .repos-info-section {
+    border-radius: 8px;
+    padding: 10px;
+    background-color: #111;
+    border: 1px solid #333;
+}
+@media (max-width: 769px) {
+    .profile .container .user-info-section {
+        grid-column: 1/11;
+    }
+    .profile .container .repos-info-section {
+        grid-column: 1/11;
+    }
+}
+
+
+.profile .container .user-info-section .top .user-pic {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin: 10px auto;
+    background-color: #222;
+    border: 1px solid #333;
+}
+.profile .container .user-info-section .top .user-pic img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.profile .container .user-info-section .top p {
+    padding: 2px;
+    margin: 6px auto;
+    border-radius: 8px;
+}
+.profile .container .user-info-section .top .user-name {
+    font-size: 1.3em;
+    color: var(--clr);
+}
+@media (max-width: 769px) {
+    .profile .container .user-info-section .top .user-name {
+        text-align: center;
+    }
+}
+
+.profile .container .user-info-section .top .user-bio {
+    color: #888;
+    font-size: .9em;
+}
+
+
+
+.profile .container .user-info-section .bottom .followers {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 4px 0;
+}
+.profile .container .user-info-section .bottom .followers p {
+    color: #eee;
+    font-size: .9em;
+    display: block;
+    width: fit-content;
+    padding: 2px;
+    border-radius: 5px;
+}
+.profile .container .user-info-section .bottom .followers P span {
+    font-weight: bold;
+    font-size: 1em;
+}
+.profile .container .user-info-section .bottom p.location,
+.profile .container .user-info-section .bottom p.repos {
+    margin: 6px auto;
+    font-size: 1em;
+    color: var(--clr);
+    padding: 4px 2px;
+}
+.profile .container .user-info-section .bottom a {
+    display: block;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    padding: 12px 32px;
+    background-color: #006eff;
+    color: var(--clr);
+    font-size: 1em;
+    font-weight: bold;
+    text-align: center;
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.profile .container .repos-info-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+.profile .container .repos-info-section .repo-box {
+    background-color: #222;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.profile .container .repos-info-section .repo-box .repo-pic {
+    width: 100px;
+    height: 100px;
+    background-color: #111;
+    border-radius: 50%;
+    border: 1px solid #333;
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+.profile .container .repos-info-section .repo-box .repo-pic img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.profile .container .repos-info-section .repo-box .repo-name {
+    text-align: center;
+    color: var(--clr);
+    font-size: 1.1em;
+    padding: 2px;
+    margin: 6px 0;
+}
+.profile .container .repos-info-section .repo-box .repo-description {
+    font-size: .9em;
+    color: #999;
+    padding: 2px;
+    margin: 6px 0;
+    line-height: 1.4em;
+}
+
+.profile .container .repos-info-section .repo-box .actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+.profile .container .repos-info-section .repo-box .actions .info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.profile .container .repos-info-section .repo-box .actions .info div {
+    width: fit-content;
+    padding: 6px;
+    font-size: .9em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+    background-color: #1a1a1a;
+    border-radius: 4px;
+    color: #ccc;
+}
+.profile .container .repos-info-section .repo-box .actions .repo-link {
+    background-color: red;
+    display: block;
+    width: fit-content;
+    padding: 8px 16px;
+    color: var(--clr);
+    background-color: #006eff;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 4px;
+    align-self: flex-end;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.app-footer {
+    background-color: #222;
+    padding: 100px 10px;
+}
+.app-footer .container {
+    display: grid;
+    gap: 10px;
+    justify-items: center;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+.app-footer .container p.name {
+    color: #fff;
+    font-size: 1.1em;
+    font-weight: bold;
+    background-color: #1a1a1a;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+}
+.app-footer .container a {
+    display: flex;
+    width: 100%;
+    gap: 10px;
+    border-radius: 4px;
+    align-items: center;
+    background-color: #1a1a1a;
+    justify-content: space-between;
+    color: #fff;
+    font-size: 1em;
+    padding: 8px;
+}
+.app-footer .container a i {
+    font-size: 1.2em;
+}
+.app-footer .container a:nth-of-type(1) i {
+    color: #000;
+}
+
+.app-footer .container a:nth-of-type(2) i {
+    color: #0077b5;
+}
+
+.app-footer .container a:nth-of-type(3) i {
+    color: #1DA1F2;
+}
+
+.app-footer .container a:nth-of-type(4) i {
+    color: #DB4437;
+}
+
+.app-footer .container a:nth-of-type(5) i {
+    color: #ffffff;
+}
+
+.app-footer .container a:nth-of-type(6) i {
+    color: #007BFF;
+}
