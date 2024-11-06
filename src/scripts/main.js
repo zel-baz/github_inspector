@@ -15,7 +15,7 @@ closeError.addEventListener("click", () => {
     errorSection.classList.remove("active");
 })
 
-const defaultUser = 'zouhairElbaz';
+const defaultUser = 'zel-baz';
 window.onload = ()=>{
     getUserInfo(defaultUser);
     getUserRepos(defaultUser);
