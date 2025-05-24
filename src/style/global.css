@@ -1,6 +1,86 @@
 :root {
-    --bg: #111;
-    --clr: #fff;
+    /* New Color Palette */
+    /* Accents */
+    --color-accent-primary: #007bff; /* Vibrant Blue */
+    --color-accent-primary-hover: #0056b3; /* Darker Blue for hover */
+    --color-accent-secondary: #17a2b8; /* Teal/Cyan */
+    --color-accent-secondary-hover: #117a8b; /* Darker Teal for hover */
+
+    /* Backgrounds */
+    --color-background-deep: #0D1117;     /* Body background */
+    --color-background-medium: #161B22;   /* Main container background (header, profile, footer) */
+    --color-background-light: #21262D;    /* Card background (user-info, repo-box, footer items, inputs) */
+
+    /* Text */
+    --color-text-emphasis: #E6EDF3;   /* Headings, important text */
+    --color-text-primary: #C9D1D9;    /* Main body text */
+    --color-text-secondary: #8B949E;  /* Muted, secondary text */
+    --color-text-link: var(--color-accent-primary);
+
+    /* Borders */
+    --color-border-primary: #30363D;    /* Component borders */
+    --color-border-secondary: #484F58;  /* Input/interactive element borders */
+    
+    /* Semantic Colors */
+    --color-semantic-error: #f00; /* Standard Red */
+    --color-semantic-success: #28a745; /* Green */
+    --color-semantic-warning: #ffc107; /* Yellow */
+
+    /* Old variable mappings (to be removed or phased out if not used by JS) */
+    --primary-color: var(--color-accent-primary);
+    --secondary-color: var(--color-background-light); /* Mapped to a new bg, consider removal */
+    --accent-color: var(--color-border-primary); /* Mapped from old border to new */
+    --background-body: var(--color-background-deep);
+    --background-container: var(--color-background-medium);
+    --background-card: var(--color-background-light);
+
+    --text-color-headings: var(--color-text-emphasis);
+    --text-color-body: var(--color-text-primary);
+    --text-color-links: var(--color-text-link);
+    --text-color-light: var(--color-text-emphasis);
+    --text-color-muted: var(--color-text-secondary);
+    --text-color-error: var(--color-semantic-error);
+
+    /* Typography */
+    --font-family-headings: 'Montserrat', sans-serif;
+    --font-family-body: 'Roboto', sans-serif;
+
+    --font-size-base: 1rem; /* Base size */
+    --font-size-small: 0.875rem; /* ~14px */
+    --font-size-medium: 1.125rem; /* ~18px */
+    --font-size-large: 1.25rem; /* ~20px */
+    --font-size-xl: 1.5rem; /* ~24px */
+    --font-size-xxl: 1.75rem; /* ~28px */
+
+    --line-height-base: 1.6;
+    --line-height-headings: 1.3;
+
+    /* Spacing */
+    --spacing-unit: 10px;
+    --spacing-xs: calc(var(--spacing-unit) * 0.5); /* 5px */
+    --spacing-sm: var(--spacing-unit); /* 10px */
+    --spacing-md: calc(var(--spacing-unit) * 1.5); /* 15px */
+    --spacing-lg: calc(var(--spacing-unit) * 2);   /* 20px */
+    --spacing-xl: calc(var(--spacing-unit) * 3);   /* 30px */
+    --spacing-xxl: calc(var(--spacing-unit) * 4);  /* 40px */
+
+
+    /* Borders */
+    --border-radius-small: 4px;
+    --border-radius-medium: 8px;
+    --border-radius-large: 20px;
+    --border-color: var(--color-border-primary); /* Mapped to new var */
+    --border-color-accent: var(--color-border-secondary); /* Mapped to new var */
+    --border-width: 1px;
+
+    /* Shadows */
+    --box-shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.2); /* Adjusted alpha for dark theme */
+    --box-shadow-md: 0 4px 8px rgba(0, 0, 0, 0.25);/* Adjusted alpha for dark theme */
+    --box-shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.3); /* Adjusted alpha for dark theme */
+
+    /* Old variables for compatibility - can be removed if not used by JS directly */
+    --bg: var(--background-body);
+    --clr: var(--text-color-light);
 }
 :focus {
     outline: none;
@@ -10,8 +90,8 @@
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     margin: 0;
-    caret-color: var(--main-color);
-    font-family: sans-serif;
+    caret-color: var(--color-accent-primary);
+    font-family: var(--font-family-body);
 }
 html {
     scroll-behavior: smooth;
@@ -24,9 +104,11 @@ a {
 }
 h1,h2,h3,h4,h5,h6{
     margin: 0;
+    font-family: var(--font-family-headings); /* Ensure headings use heading font */
+    line-height: var(--line-height-headings);
 }
 .container {
-    padding: 0 15px;
+    padding: 0 var(--spacing-md);
     margin: auto;
 }
 @media (min-width: 768px) {
@@ -45,86 +127,138 @@ h1,h2,h3,h4,h5,h6{
     }
 }
 body {
-    background-color: var(--bg);
-    color: var(--clr);
-    font-family: sans-serif;
+    background-color: var(--color-background-deep);
+    color: var(--color-text-primary);
+    font-family: var(--font-family-body);
+    line-height: var(--line-height-base);
     min-height: 100vh;
     position: relative;
+    padding-block: var(--spacing-lg); /* Added overall page padding */
 }
 
 
 /* App Header */
-.app-header,
+.app-header { /* Removed .profile from here to handle its padding separately */
+    padding: var(--spacing-sm);
+    margin-bottom: var(--spacing-lg); /* Added margin to separate from content */
+}
 .profile {
-    padding: 10px;
+    padding: var(--spacing-sm);
+    margin-bottom: var(--spacing-lg); /* Added margin to separate from footer or next content */
 }
 .app-header .container {
     position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 25px;
-    border-radius: 20px;
-    border: 1px solid #393939;
-    background-color: #222;
+    padding: var(--spacing-sm) calc(var(--spacing-sm) * 2.5); /* 10px 25px */
+    border-radius: var(--border-radius-large);
+    border: var(--border-width) solid var(--color-border-primary);
+    background-color: var(--color-background-medium);
+    box-shadow: var(--box-shadow-md);
 }
 .app-header .container .logo {
     display: flex;
     justify-content: center;
     align-items: center;
     width: fit-content;
-    padding: 2px;
-    color: #fff;
+    padding: var(--spacing-xs);
+    color: var(--color-text-emphasis);
+    transition: color 0.2s ease-in-out;
+}
+.app-header .container .logo:hover,
+.app-header .container .logo:focus {
+    color: var(--color-accent-primary);
+    text-decoration: none; /* Ensure no underline appears on logo link hover */
 }
 .app-header .container .logo h1 {
-    font-size: 1.8em;
-    font-weight: normal;
+    font-size: var(--font-size-xxl);
+    font-weight: 700; /* Bolder for Montserrat */
+    font-family: var(--font-family-headings);
 }
 
+/* Responsive Header Adjustments */
+@media (max-width: 576px) {
+    .app-header .container .search {
+        width: 60%; /* Reduce search bar width on small-medium screens */
+    }
+    .app-header .container .logo h1 {
+        font-size: var(--font-size-xl); /* Slightly smaller logo text */
+    }
+}
 
 @media (max-width: 350px) {
+    .app-header .container {
+        padding: var(--spacing-sm) var(--spacing-md); /* Reduce padding for very small screens */
+    }
     .app-header .container .logo {
         display: none;
     }
     .app-header .container .logo h1 {
-        font-size: 1.2em;
+        font-size: var(--font-size-large); 
+    }
+    .app-header .container .search {
+        width: 100%;
+    }
+    .app-header .container .search input {
+        width: 70%; /* Adjust input/button ratio */
+    }
+    .app-header .container .search button {
+        width: 30%;
+        font-size: var(--font-size-small); /* Reduce button font size if icon is too big or text wraps */
+    }
+    .app-header .container .search button i {
+        font-size: var(--font-size-base); /* Ensure icon is not too large */
     }
 }
+
+/* Default Search Bar Styles (previously below 350px media query) */
 .app-header .container .search {
-    width: 70%;
+    width: 70%; /* Default width for larger screens */
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-@media (max-width: 350px) {
-    .app-header .container .search {
-        width: 100%;
-    }
-}
 .app-header .container .search input {
     display: block;
     width: 80%;
-    padding: 10px;
-    background-color: #333;
-    border: 1px solid #444;
-    border-radius: 8px 0 0 8px;
-    color: #fff;
-    font-size: 1em;
+    padding: var(--spacing-sm);
+    background-color: var(--color-background-light); 
+    border: var(--border-width) solid var(--color-border-secondary); 
+    border-radius: var(--border-radius-medium) 0 0 var(--border-radius-medium);
+    color: var(--color-text-emphasis);
+    font-size: var(--font-size-base);
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.app-header .container .search input:focus {
+    outline: none;
+    border-color: var(--color-accent-primary);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25); /* Using literal color for alpha effect */
 }
 .app-header .container .search button {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 20%;
-    border: 1px solid #444;
-    border-radius: 0 8px 8px 0;
-    padding: 11px;
-    background-color: #006eff;
-    color: var(--clr);
-    font-size: 1em;
+    border: var(--border-width) solid var(--color-accent-primary); /* Border matches background */
+    border-left: none; /* Remove left border as it's joined with input */
+    border-radius: 0 var(--border-radius-medium) var(--border-radius-medium) 0;
+    padding: calc(var(--spacing-sm) + 1px); /* To match input padding */
+    background-color: var(--color-accent-primary);
+    color: var(--color-text-emphasis);
+    font-size: var(--font-size-base);
     cursor: pointer;
+    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
 }
-
+.app-header .container .search button:hover {
+    background-color: var(--color-accent-primary-hover);
+    border-color: var(--color-accent-primary-hover);
+}
+.app-header .container .search button:focus {
+    outline: none;
+    border-color: var(--color-accent-primary-hover);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.35); /* Using literal color for alpha effect */
+}
 
 
 /* Error section */
@@ -137,37 +271,52 @@ body {
     display: none;
     justify-content: center;
     align-items: center;
-    background: rgba(0, 0, 255, 0.1);
-    backdrop-filter: blur(15px);
+    background: rgba(0, 0, 0, 0.5); /* Darker overlay for better contrast with error text */
+    backdrop-filter: blur(var(--spacing-xs)); /* Reduced blur */
 }
 .error-section.active {
     display: flex;
 }
 .error-section .error {
-    font-size: 1.6em;
-    color: #f00;
-    padding: 10px;
+    font-size: var(--font-size-xl);
+    color: var(--color-semantic-error);
+    background-color: var(--color-background-light); /* Give error a slight bg */
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius-small);
+    box-shadow: var(--box-shadow-lg);
 }
 .error-section button.close {
     display: flex;
     cursor: pointer;
     justify-content: center;
     align-items: center;
-    margin: 10px auto;
+    margin: var(--spacing-md) auto 0 auto; 
     width: fit-content;
-    padding: 10px 32px;
-    border: none;
-    border-radius: 8px;
-    font-size: 1.4em;
-    background-color: rgb(255, 255, 255);
+    padding: var(--spacing-sm) var(--spacing-lg); 
+    border: var(--border-width) solid var(--color-border-secondary);
+    border-radius: var(--border-radius-medium);
+    font-size: var(--font-size-medium); 
+    background-color: var(--color-background-light); 
+    color: var(--color-text-primary);
+    transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+.error-section button.close:hover {
+    background-color: var(--color-background-medium);
+    color: var(--color-text-emphasis);
+    border-color: var(--color-border-primary);
+}
+.error-section button.close:focus {
+    outline: none;
+    border-color: var(--color-accent-primary);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
 }
 @media (max-width: 300px){
     .error-section .error {
-        font-size: 1.2em;
+        font-size: var(--font-size-large); /* Adjusted from 1.2em */
     }
     .error-section button.close {
-        padding: 8px 14px;
-        font-size: 1em;
+        padding: var(--spacing-xs) var(--spacing-md); /* 8px 14px */
+        font-size: var(--font-size-base);
     }
 }
 
@@ -177,13 +326,14 @@ body {
 
 /* Profile style */
 .profile .container {
-    background-color: #222;
-    border: 1px solid #393939;
-    padding: 10px;
-    border-radius: 8px;
+    background-color: var(--color-background-medium);
+    border: var(--border-width) solid var(--color-border-primary); 
+    padding: var(--spacing-lg); 
+    border-radius: var(--border-radius-medium);
     display: grid;
-    gap: 10px;
+    gap: var(--spacing-lg); 
     grid-template-columns: repeat(10, 1fr);
+    box-shadow: var(--box-shadow-md);
 }
 .profile .container .user-info-section {
     grid-column: 1/4;
@@ -193,10 +343,11 @@ body {
 }
 .profile .container .user-info-section,
 .profile .container .repos-info-section {
-    border-radius: 8px;
-    padding: 10px;
-    background-color: #111;
-    border: 1px solid #333;
+    border-radius: var(--border-radius-medium);
+    padding: var(--spacing-md); 
+    background-color: var(--color-background-light); /* Changed from body to light */
+    border: var(--border-width) solid var(--color-border-primary);
+    box-shadow: var(--box-shadow-sm);
 }
 @media (max-width: 769px) {
     .profile .container .user-info-section {
@@ -205,16 +356,91 @@ body {
     .profile .container .repos-info-section {
         grid-column: 1/11;
     }
+    .profile .container .user-info-section .top .user-bio {
+        text-align: center; /* Center bio when stacked */
+    }
 }
 
+/* Further adjustments for very small screens */
+@media (max-width: 480px) {
+    body {
+        padding-block: var(--spacing-md); /* Reduce overall page padding */
+    }
+    .app-header, .profile {
+        margin-bottom: var(--spacing-md); /* Reduce bottom margin */
+    }
+    .profile .container {
+        padding: var(--spacing-md); /* Reduce padding inside profile container */
+        gap: var(--spacing-md);
+    }
+    .profile .container .user-info-section,
+    .profile .container .repos-info-section {
+        padding: var(--spacing-sm); /* Reduce padding inside user/repo sections */
+    }
+    .profile .container .user-info-section .top .user-pic {
+        width: 100px; 
+        height: 100px;
+    }
+    .profile .container .user-info-section .top .user-name {
+        font-size: var(--font-size-medium); /* Slightly smaller user name */
+    }
+    .profile .container .user-info-section .bottom a { /* Visit Profile button */
+        padding: var(--spacing-sm) var(--spacing-lg);
+        font-size: var(--font-size-small);
+    }
+
+    .profile .container .repos-info-section .repo-box {
+        padding: var(--spacing-sm); /* Reduce padding in repo boxes */
+    }
+    .profile .container .repos-info-section .repo-box .repo-pic {
+        width: 80px;
+        height: 80px;
+        margin-bottom: var(--spacing-sm);
+    }
+    .profile .container .repos-info-section .repo-box .repo-name {
+        font-size: var(--font-size-base); /* Adjust repo name font */
+    }
+    .profile .container .repos-info-section .repo-box .repo-description {
+        font-size: var(--font-size-small);
+        margin-bottom: var(--spacing-sm);
+    }
+    .profile .container .repos-info-section .repo-box .actions {
+        gap: var(--spacing-xs); /* Reduce gap in actions */
+    }
+    .profile .container .repos-info-section .repo-box .actions .info {
+        gap: var(--spacing-xs);
+    }
+    .profile .container .repos-info-section .repo-box .actions .info div {
+        padding: var(--spacing-xs);
+        font-size: 0.8rem; /* Smaller font for stars/forks */
+        gap: var(--spacing-xs);
+    }
+    .profile .container .repos-info-section .repo-box .actions .repo-link { /* Visit repo button */
+        padding: var(--spacing-xs) var(--spacing-sm);
+        font-size: var(--font-size-small);
+    }
+
+    .app-footer {
+        padding: var(--spacing-lg) var(--spacing-xs); /* Adjust footer padding */
+        margin-top: var(--spacing-xl);
+    }
+    .app-footer .container {
+        gap: var(--spacing-sm);
+    }
+    .app-footer .container p.name,
+    .app-footer .container a {
+        font-size: var(--font-size-small);
+        padding: var(--spacing-xs);
+    }
+}
 
 .profile .container .user-info-section .top .user-pic {
-    width: 120px;
-    height: 120px;
+    width: 120px; /* Keep fixed size for now */
+    height: 120px; /* Keep fixed size for now */
     border-radius: 50%;
-    margin: 10px auto;
-    background-color: #222;
-    border: 1px solid #333;
+    margin: var(--spacing-sm) auto;
+    background-color: var(--color-background-medium); /* User pic bg */
+    border: var(--border-width) solid var(--color-border-primary);
 }
 .profile .container .user-info-section .top .user-pic img {
     width: 100%;
@@ -223,13 +449,16 @@ body {
     object-fit: cover;
 }
 .profile .container .user-info-section .top p {
-    padding: 2px;
-    margin: 6px auto;
-    border-radius: 8px;
+    padding: var(--spacing-xs);
+    /* margin: calc(var(--spacing-xs) + 2px) auto; /* 6px */ /* Removed auto margin for p, handled by text-align or parent */
+    border-radius: var(--border-radius-medium);
 }
 .profile .container .user-info-section .top .user-name {
-    font-size: 1.3em;
-    color: var(--clr);
+    margin-bottom: var(--spacing-sm); 
+    font-size: var(--font-size-large);
+    color: var(--color-text-emphasis);
+    font-family: var(--font-family-headings);
+    font-weight: 700; 
 }
 @media (max-width: 769px) {
     .profile .container .user-info-section .top .user-name {
@@ -238,8 +467,9 @@ body {
 }
 
 .profile .container .user-info-section .top .user-bio {
-    color: #888;
-    font-size: .9em;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-small);
+    margin-bottom: var(--spacing-md); 
 }
 
 
@@ -248,39 +478,50 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 4px 0;
+    margin-bottom: var(--spacing-sm); 
 }
 .profile .container .user-info-section .bottom .followers p {
-    color: #eee;
-    font-size: .9em;
+    color: var(--color-text-primary); 
+    font-size: var(--font-size-small);
     display: block;
     width: fit-content;
-    padding: 2px;
-    border-radius: 5px;
+    padding: var(--spacing-xs);
+    border-radius: var(--border-radius-small);
 }
 .profile .container .user-info-section .bottom .followers P span {
     font-weight: bold;
-    font-size: 1em;
+    font-size: var(--font-size-base); 
 }
 .profile .container .user-info-section .bottom p.location,
 .profile .container .user-info-section .bottom p.repos {
-    margin: 6px auto;
-    font-size: 1em;
-    color: var(--clr);
-    padding: 4px 2px;
+    margin: var(--spacing-sm) 0; 
+    font-size: var(--font-size-base);
+    color: var(--color-text-emphasis);
+    padding: var(--spacing-xs) 0; 
 }
 .profile .container .user-info-section .bottom a {
     display: block;
-    border-radius: 8px;
+    border-radius: var(--border-radius-medium);
     cursor: pointer;
     width: 100%;
-    padding: 12px 32px;
-    background-color: #006eff;
-    color: var(--clr);
-    font-size: 1em;
+    padding: var(--spacing-sm) var(--spacing-xl);
+    background-color: transparent; /* Secondary button style */
+    color: var(--color-accent-primary);
+    border: var(--border-width) solid var(--color-accent-primary);
+    font-size: var(--font-size-base);
     font-weight: bold;
     text-align: center;
-    
+    margin-top: var(--spacing-md); 
+    transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
+}
+.profile .container .user-info-section .bottom a:hover,
+.profile .container .user-info-section .bottom a:focus {
+    background-color: var(--color-accent-primary);
+    color: var(--color-text-emphasis);
+    outline: none;
+}
+.profile .container .user-info-section .bottom a:focus {
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
 }
 
 
@@ -299,23 +540,30 @@ body {
 .profile .container .repos-info-section {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
+    gap: var(--spacing-lg); 
 }
 .profile .container .repos-info-section .repo-box {
-    background-color: #222;
-    border: 1px solid #333;
-    border-radius: 8px;
-    padding: 10px;
+    background-color: var(--color-background-light); 
+    border: var(--border-width) solid var(--color-border-primary); 
+    border-radius: var(--border-radius-medium);
+    padding: var(--spacing-md); 
+    box-shadow: var(--box-shadow-sm);
+    display: flex; 
+    flex-direction: column; 
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.profile .container .repos-info-section .repo-box:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--box-shadow-md);
 }
 
 .profile .container .repos-info-section .repo-box .repo-pic {
-    width: 100px;
-    height: 100px;
-    background-color: #111;
+    width: 100px; 
+    height: 100px; 
+    background-color: var(--color-background-deep); /* Repo pic bg - deeper */
     border-radius: 50%;
-    border: 1px solid #333;
-    margin: auto;
-    margin-bottom: 10px;
+    border: var(--border-width) solid var(--color-border-primary);
+    margin: 0 auto var(--spacing-md); 
 }
 
 .profile .container .repos-info-section .repo-box .repo-pic img {
@@ -326,54 +574,68 @@ body {
 }
 .profile .container .repos-info-section .repo-box .repo-name {
     text-align: center;
-    color: var(--clr);
-    font-size: 1.1em;
-    padding: 2px;
-    margin: 6px 0;
+    color: var(--color-text-emphasis);
+    font-family: var(--font-family-headings);
+    font-size: var(--font-size-medium);
+    font-weight: 700; 
+    padding: var(--spacing-xs);
+    margin: 0 0 var(--spacing-sm) 0; 
 }
 .profile .container .repos-info-section .repo-box .repo-description {
-    font-size: .9em;
-    color: #999;
-    padding: 2px;
-    margin: 6px 0;
-    line-height: 1.4em;
+    font-size: var(--font-size-small);
+    color: var(--color-text-secondary); 
+    padding: var(--spacing-xs) 0; 
+    margin: 0 0 var(--spacing-md) 0; 
+    line-height: var(--line-height-base);
 }
 
 .profile .container .repos-info-section .repo-box .actions {
+    margin-top: auto; /* Push actions to the bottom of the card */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 10px;
+    gap: var(--spacing-sm);
 }
 .profile .container .repos-info-section .repo-box .actions .info {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: var(--spacing-sm);
 }
 .profile .container .repos-info-section .repo-box .actions .info div {
     width: fit-content;
-    padding: 6px;
-    font-size: .9em;
+    padding: calc(var(--spacing-xs) + 1px); /* 6px */
+    font-size: var(--font-size-small);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 6px;
-    background-color: #1a1a1a;
-    border-radius: 4px;
-    color: #ccc;
+    gap: calc(var(--spacing-xs) + 1px); 
+    background-color: var(--color-background-medium); /* Darker bg for info items */
+    border-radius: var(--border-radius-small);
+    color: var(--color-text-primary); 
 }
 .profile .container .repos-info-section .repo-box .actions .repo-link {
-    background-color: red;
     display: block;
     width: fit-content;
-    padding: 8px 16px;
-    color: var(--clr);
-    background-color: #006eff;
-    font-size: 1em;
+    padding: var(--spacing-xs) var(--spacing-md);
+    color: var(--color-accent-primary); /* Link-like button */
+    background-color: transparent;
+    border: var(--border-width) solid var(--color-accent-primary);
+    font-size: var(--font-size-base);
     font-weight: bold;
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: var(--border-radius-small);
     align-self: flex-end;
+    text-align: center; /* Ensure text is centered */
+    transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
+}
+.profile .container .repos-info-section .repo-box .actions .repo-link:hover,
+.profile .container .repos-info-section .repo-box .actions .repo-link:focus {
+    background-color: var(--color-accent-primary);
+    color: var(--color-text-emphasis);
+    outline: none;
+}
+.profile .container .repos-info-section .repo-box .actions .repo-link:focus {
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
 }
 
 
@@ -388,42 +650,57 @@ body {
 
 
 .app-footer {
-    background-color: #222;
-    padding: 100px 10px;
+    background-color: var(--color-background-medium);
+    padding: var(--spacing-xl) var(--spacing-sm); 
+    margin-top: var(--spacing-xxl); 
+    border-top: var(--border-width) solid var(--color-border-primary); 
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.1); 
 }
 .app-footer .container {
     display: grid;
-    gap: 10px;
+    gap: var(--spacing-md); 
     justify-items: center;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 }
 .app-footer .container p.name {
-    color: #fff;
-    padding: 8px;
-    font-size: 1.1em;
-    font-weight: bold;
-    background-color: #1a1a1a;
+    color: var(--color-text-emphasis);
+    padding: var(--spacing-xs); 
+    font-size: var(--font-size-medium);
+    font-weight: 700; 
+    font-family: var(--font-family-headings);
+    background-color: var(--color-background-light);
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 4px;
+    border-radius: var(--border-radius-small);
 }
 .app-footer .container a {
     display: flex;
     width: 100%;
-    gap: 10px;
-    border-radius: 4px;
+    gap: var(--spacing-sm);
+    border-radius: var(--border-radius-small);
     align-items: center;
-    background-color: #1a1a1a;
+    background-color: var(--color-background-light);
     justify-content: space-between;
-    color: #fff;
-    font-size: 1em;
-    padding: 8px;
+    color: var(--color-text-emphasis);
+    font-size: var(--font-size-base);
+    padding: var(--spacing-xs); 
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 }
+.app-footer .container a:hover,
+.app-footer .container a:focus {
+    background-color: var(--color-border-primary); /* Subtle bg change */
+    color: var(--color-accent-primary); /* Text part changes to accent */
+    text-decoration: none; /* Ensure no underline */
+}
+/* Keep icon colors distinct on hover, so no specific a:hover i rule that overrides them all */
+
 .app-footer .container a i {
-    font-size: 1.2em;
+    font-size: var(--font-size-large); /* Adjusted from 1.2em */
+    transition: color 0.2s ease-in-out; /* Smooth icon color transition if any was applied globally */
 }
+/* Specific icon colors - kept as is */
 .app-footer .container a:nth-of-type(1) i {
     color: #000;
 }
